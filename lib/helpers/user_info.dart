@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+//penyimpanan data
 class UserInfo {
   Future setToken(String value) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();

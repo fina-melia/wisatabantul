@@ -1,4 +1,5 @@
 class AppException implements Exception {
+  //membuat error headelling
   final _message;
   final _prefix;
 
@@ -31,4 +32,3 @@ class UnprocessableEntityException extends AppException {
 class InvalidInputException extends AppException {
   InvalidInputException([String? message]) : super(message, "Invalid Input: ");
 }
-

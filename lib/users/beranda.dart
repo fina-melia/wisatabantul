@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart'; //import carousel slider
 
 class Beranda extends StatefulWidget {
-  const Beranda({Key? key}) : super(key: key);
+  Beranda({Key? key}) : super(key: key);
 
   @override
   _BerandaState createState() => _BerandaState();
 }
 
 class _BerandaState extends State<Beranda> {
+  final List<String> imgList = [
+    //menyimpan link gambar
+    'https://happytour.id/wp-content/uploads/sites/30/2018/07/PantaiGoaCemara1.jpg',
+    'https://happytour.id/wp-content/uploads/sites/30/2018/07/PantaiGoaCemara2.jpg',
+    'https://happytour.id/wp-content/uploads/sites/30/2018/07/PantaiGoaCemara3.jpg',
+    'https://happytour.id/wp-content/uploads/sites/30/2018/07/PantaiGoaCemara2.jpg',
+    'https://happytour.id/wp-content/uploads/sites/30/2018/07/PantaiGoaCemara3.jpg'
+  ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,25 +65,30 @@ class _BerandaState extends State<Beranda> {
         ],
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Find the best tour",
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-            ],
-          ),
-        ),
+      body: Builder(
+        // mengatur image slide
+        builder: (context) {
+          final double height = MediaQuery.of(context).size.height;
+          return CarouselSlider(
+            options: CarouselOptions(
+              height: height,
+              autoPlay: true,
+              viewportFraction: 1.0,
+              enlargeCenterPage: false,
+              // autoPlay: false,
+            ),
+            items: imgList
+                .map((item) => Container(
+                      child: Center(
+                          child: Image.network(
+                        item,
+                        fit: BoxFit.cover,
+                        height: height,
+                      )),
+                    ))
+                .toList(),
+          );
+        },
       ),
     );
   }

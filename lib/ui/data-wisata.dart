@@ -1,6 +1,7 @@
 import 'package:wisatabantul/model/getWisata.dart';
 import 'package:wisatabantul/bloc/getWisataBloc.dart';
 import 'package:flutter/material.dart';
+import 'package:wisatabantul/ui/detail-wisata.dart';
 
 class dataWisata extends StatefulWidget {
   dataWisata({Key? key}) : super(key: key);
@@ -17,20 +18,6 @@ class _dataWisataState extends State<dataWisata> {
       home: Scaffold(
         appBar:
             AppBar(backgroundColor: Colors.green, title: Text("Daftar Wisata")),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                trailing: const Icon(Icons.task_sharp),
-                title: const Text('Data Wisata'),
-                onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => dataWisata()));
-                },
-              ),
-            ],
-          ),
-        ),
         body: FutureBuilder<List>(
           future: getWisataBloc.presensi(),
           builder: (context, snapshot) {
@@ -69,10 +56,25 @@ class ItemWisata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        //mengarahkah jika kita mengklik salah satu tempat wisata maka
+        Navigator.push(
+            //menuju ke detail wisata
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailWisata(
+                      wisata: wisata,
+                    )));
+      },
       child: Card(
         child: ListTile(
+          leading: CircleAvatar(
+            radius: 28,
+            backgroundImage: NetworkImage(wisata.gambar_wisata!),
+          ),
           title: Text(wisata.nama_wisata!),
           subtitle: Text(wisata.alamat_wisata!),
+          trailing: Icon(Icons.arrow_forward_rounded),
         ),
       ),
     );

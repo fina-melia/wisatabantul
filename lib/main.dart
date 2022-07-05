@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wisatabantul/launcher.dart';
-import 'package:wisatabantul/ui/data-wisata.dart';
 
 void main() {
   runApp(MyApp());

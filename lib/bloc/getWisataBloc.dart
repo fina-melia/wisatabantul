@@ -1,8 +1,8 @@
 import 'dart:convert';
-
+// Di dalam folder ini berisis file-file yang berfungsi sebagai
+//controller baik itu untuk melakukan proses login, registrasi dan lain-lain
 import 'package:wisatabantul/helpers/api.dart';
 import 'package:wisatabantul/helpers/api_url.dart';
-import 'package:wisatabantul/helpers/user_info.dart';
 import 'package:wisatabantul/model/getWisata.dart';
 
 class getWisataBloc {

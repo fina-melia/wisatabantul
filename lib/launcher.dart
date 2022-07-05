@@ -17,10 +17,10 @@ class _LauncherState extends State<Launcher> {
   }
 
   startLaunching() async {
-    var duration = const Duration(seconds: 3);
+    var duration = const Duration(seconds: 3); // atur durasi lama munculnya
     return new Timer(duration, () {
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
-        return new users.Home();
+        return new users.Home(); // navigator untuk ngarahin ke file home.dart
       }));
     });
   }
@@ -28,6 +28,7 @@ class _LauncherState extends State<Launcher> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //splash screen
         body: Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       height: MediaQuery.of(context).size.height,
@@ -50,9 +51,9 @@ class _LauncherState extends State<Launcher> {
         children: <Widget>[
           new Center(
             child: new Image.asset(
-              "assets/logo1.png",
-              height: 200.0,
-              width: 450.0,
+              "assets/logo1.png", // memanggil gambar yang terdapat di assets
+              height: 200.0, //mengatur tinggi gambar
+              width: 450.0, // mengatur lebar gambar
             ),
           )
         ],

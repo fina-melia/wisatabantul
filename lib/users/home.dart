@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wisatabantul/ui/Pengunjungpage.dart';
 import 'package:wisatabantul/ui/data-wisata.dart';
 import 'package:wisatabantul/users/beranda.dart';
-import 'package:wisatabantul/users/berita.dart';
-import 'package:wisatabantul/users/pengunjung.dart';
-import 'package:wisatabantul/users/wisata.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,12 +9,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _bottonNavCurrentIndex = 0;
+  int _bottonNavCurrentIndex = 0; //bottom navigator
   final List<Widget> _container = [
     new Beranda(),
     new dataWisata(),
-    new Pengunjung(),
-    new Berita()
+    new PengunjungPage(),
   ];
 
   get split => null;
@@ -24,6 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var arrow_branch;
     return Scaffold(
+      //menampilkan bottom navbar
       body: _container[_bottonNavCurrentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.green,
@@ -35,16 +33,19 @@ class _HomeState extends State<Home> {
         },
         currentIndex: _bottonNavCurrentIndex,
         items: [
+          // mengisi battom navigation
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.home,
-              color: Colors.green,
+              color: Colors
+                  .green, //saat dikilik icon tersebut akan berubah menjadi warna hijau
             ),
             icon: new Icon(
+              // pada saat icon sedang tidak diklik
               Icons.home,
               color: Colors.grey,
             ),
-            label: 'Beranda',
+            label: 'Beranda', //dengan label beranda
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(
@@ -67,17 +68,6 @@ class _HomeState extends State<Home> {
               color: Colors.grey,
             ),
             label: 'Pengunjung',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: new Icon(
-              Icons.language,
-              color: Colors.green,
-            ),
-            icon: new Icon(
-              Icons.language,
-              color: Colors.grey,
-            ),
-            label: 'Berita',
           ),
         ],
       ),

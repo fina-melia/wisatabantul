@@ -1,5 +1,7 @@
 import 'dart:io';
-
+//Agar dapat mengirim atau menerima permintaan ke Rest API,
+//dibuat sebuah fungsi baik
+//itu method POST, GET dan DELETE.
 import 'package:http/http.dart' as http;
 import 'package:wisatabantul/helpers/user_info.dart';
 import 'app_exception.dart';
